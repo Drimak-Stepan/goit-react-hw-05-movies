@@ -15,7 +15,9 @@ const MovieDetailsPage = () => {
     loading: false,
     error: null,
   });
+
   const { movieId } = useParams();
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || '/movies';
@@ -76,12 +78,12 @@ const MovieDetailsPage = () => {
     <div>
       <section>
         <button onClick={goBack}>Go Back</button>
-        <img
-          src={`https://image.tmdb.org/t/p/w400/${backdrop_path}`}
-          alt={title}
-          // width={300}
-          // height={400}
-        />
+        <div>
+          <img
+            src={`https://image.tmdb.org/t/p/w400/${backdrop_path}`}
+            alt={title}
+          />
+        </div>
         <h1>{title}</h1>
         <p>GENRES: {gen}</p>
         <p>Release: {release_date}</p>

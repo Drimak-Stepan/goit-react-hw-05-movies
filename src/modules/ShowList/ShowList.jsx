@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const ShowList = ({ items }) => {
   const location = useLocation();
@@ -17,4 +18,13 @@ export default ShowList;
 
 ShowList.defaultProps = {
   items: [],
+};
+
+ShowList.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };
