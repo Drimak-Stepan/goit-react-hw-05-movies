@@ -1,4 +1,4 @@
-import TrendMovies from '../../modules/TrendMovies/TrendMovies';
+import TrendMovies from '../../modules/TrendMovies';
 
 const HomePage = () => {
   return (

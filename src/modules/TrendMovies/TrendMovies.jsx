@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { getTrendingFilms } from '../../shared/api/api';
-import ShowList from 'modules/ShowList/ShowList';
+import ShowList from 'modules/ShowList';
 import { Loader, Block } from 'shared/Loader/Loader';
 
 const TrendMovies = () => {

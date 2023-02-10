@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import MovieSearch from 'modules/MoviesSearchForm/MoviesSearchForm';
-import ShowList from 'modules/ShowList/ShowList';
+import MovieSearch from 'modules/MoviesSearchForm';
+import ShowList from 'modules/ShowList';
 
 import { searchMovie } from 'shared/api/api';
 
