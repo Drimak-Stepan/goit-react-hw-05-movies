@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const MovieSearch = () => {
+const MovieSearch = ({ onSubmit }) => {
   const [state, setState] = useState({
     search: '',
   });
@@ -15,7 +15,7 @@ const MovieSearch = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onsubmit({ ...state });
+    onSubmit({ ...state });
     setState({ search: '' });
   };
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
-import { getTrendingFilms } from './../../shared/api/api';
+import { getTrendingFilms } from '../../shared/api/api';
+import ShowList from 'modules/ShowList/ShowList';
 
-const TrendList = () => {
+const TrendMovies = () => {
   const [state, setState] = useState({
     items: [],
     loading: false,
@@ -42,23 +42,17 @@ const TrendList = () => {
     };
 
     fetchFilms();
-  }, []);
+  }, [setState]);
 
   const { items, loading, error } = state;
 
-  const elements = items.map(({ id, title }) => (
-    <li key={id}>
-      <Link to={`/movies/${id}`}>{title}</Link>
-    </li>
-  ));
-
   return (
     <div>
-      <ul>{elements}</ul>
+      {items.length > 0 && <ShowList items={items} />}
       {loading && <p>...load</p>}
       {error && <p>...load failed</p>}
     </div>
   );
 };
 
-export default TrendList;
+export default TrendMovies;

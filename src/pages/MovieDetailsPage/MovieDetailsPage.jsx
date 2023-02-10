@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useParams,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
 
 import { getMovieDetails } from '../../shared/api/api';
 
@@ -11,8 +17,9 @@ const MovieDetailsPage = () => {
   });
   const { movieId } = useParams();
   const navigate = useNavigate();
-
-  const goBack = () => navigate(-1);
+  const location = useLocation();
+  const from = location.state?.from || '/movies';
+  const goBack = () => navigate(from);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -62,22 +69,41 @@ const MovieDetailsPage = () => {
       return item.name;
     })
     .join(', ');
+
   const vot = vote_average.toFixed();
 
   return (
     <div>
-      <button onClick={goBack}>Go Back</button>
-      <img
-        src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
-        alt={title}
-        width={300}
-        height={400}
-      />
-      <h2>{title}</h2>
-      <p>GENRES: {gen}</p>
-      <p>Release: {release_date}</p>
-      <p>Vote: {vot}</p>
-      <p>Overview: {overview}</p>
+      <section>
+        <button onClick={goBack}>Go Back</button>
+        <img
+          src={`https://image.tmdb.org/t/p/w400/${backdrop_path}`}
+          alt={title}
+          // width={300}
+          // height={400}
+        />
+        <h1>{title}</h1>
+        <p>GENRES: {gen}</p>
+        <p>Release: {release_date}</p>
+        <p>Vote: {vot}</p>
+        <p>Overview: {overview}</p>
+      </section>
+      <section>
+        <h2>Additional information</h2>
+        <ul>
+          <li>
+            <Link state={{ from }} to={`/movies/${movieId}/cast`}>
+              Cast
+            </Link>
+          </li>
+          <li>
+            <Link state={{ from }} to={`/movies/${movieId}/reviews`}>
+              Reviews
+            </Link>
+          </li>
+        </ul>
+        <Outlet />
+      </section>
     </div>
   );
 };
