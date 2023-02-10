@@ -9,6 +9,8 @@ import {
 
 import { getMovieDetails } from '../../shared/api/api';
 import { Section, Btn, Imges, Description } from './MovieDetailsPage.styled';
+import comeBack from '../../shared/come_back.jpg';
+
 const MovieDetailsPage = () => {
   const [state, setState] = useState({
     item: {},
@@ -60,12 +62,11 @@ const MovieDetailsPage = () => {
   const {
     title,
     genres = [],
-    backdrop_path,
+    poster_path = null,
     release_date,
     vote_average = 0,
     overview,
   } = state.item;
-
   const gen = genres
     .map(item => {
       return item.name;
@@ -73,7 +74,6 @@ const MovieDetailsPage = () => {
     .join(', ');
 
   const vot = vote_average.toFixed();
-  const img = `https://image.tmdb.org/t/p/w400/${backdrop_path}`;
 
   return (
     <>
@@ -81,7 +81,14 @@ const MovieDetailsPage = () => {
       <Section>
         <div>
           <Imges>
-            <img src={img} alt={title} />
+            <img
+              src={
+                poster_path !== null
+                  ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                  : comeBack
+              }
+              alt={title}
+            />
           </Imges>
           <Description>
             <h1>{title}</h1>

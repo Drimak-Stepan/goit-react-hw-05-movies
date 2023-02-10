@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getMovieActors } from 'shared/api/api';
-
+import comeBack from '../../shared/come_back.jpg';
 import { Wrapper, Author, CardWrapper } from './CastPage.styled';
+
 const CastPage = () => {
   const [state, setState] = useState({
     items: [],
@@ -49,7 +50,14 @@ const CastPage = () => {
   const { items } = state;
   const elements = items.map(({ id, name, character, profile_path }) => (
     <CardWrapper key={id}>
-      <img src={`https://image.tmdb.org/t/p/w200/${profile_path}`} alt={name} />
+      <img
+        src={
+          profile_path !== null
+            ? `https://image.tmdb.org/t/p/w500/${profile_path}`
+            : comeBack
+        }
+        alt={name}
+      />
       <Author>Name: {name}</Author>
       <p>Character: {character}</p>
     </CardWrapper>

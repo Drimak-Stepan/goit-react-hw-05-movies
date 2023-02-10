@@ -31,9 +31,13 @@ export const Btn = styled.button`
 
 export const Imges = styled.div`
   margin: 0 10px 0 0;
-  flex-basis: 600px;
+  flex-basis: 300px;
+  > img {
+    max-width: 300px;
+    height: auto;
+  }
 `;
 export const Description = styled.div`
   margin-left: 0;
-  flex-basis: 600px;
+  flex-basis: 1100px;
 `;

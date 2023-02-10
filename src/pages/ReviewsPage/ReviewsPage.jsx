@@ -46,7 +46,6 @@ const ReviewsPag = () => {
   }, [movieId]);
 
   const { items } = state;
-  console.log(items);
   const elements = items.map(({ id, author_details, content }) => (
     <li key={id}>
       <h3>Author: {author_details.username}</h3>

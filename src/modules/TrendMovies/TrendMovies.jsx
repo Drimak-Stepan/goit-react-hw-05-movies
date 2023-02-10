@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { getTrendingFilms } from '../../shared/api/api';
 import ShowList from 'modules/ShowList/ShowList';
+import { Loader, Block } from 'shared/Loader/Loader';
 
 const TrendMovies = () => {
   const [state, setState] = useState({
@@ -49,7 +50,11 @@ const TrendMovies = () => {
   return (
     <>
       {items.length > 0 && <ShowList items={items} />}
-      {loading && <p>...load</p>}
+      {loading && (
+        <Block>
+          <Loader />
+        </Block>
+      )}
       {error && <p>...load failed</p>}
     </>
   );
