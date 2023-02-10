@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { getMovieActors } from 'shared/api/api';
 
+import { Wrapper, Author, CardWrapper } from './CastPage.styled';
 const CastPage = () => {
   const [state, setState] = useState({
     items: [],
@@ -47,18 +48,18 @@ const CastPage = () => {
 
   const { items } = state;
   const elements = items.map(({ id, name, character, profile_path }) => (
-    <li key={id}>
+    <CardWrapper key={id}>
       <img src={`https://image.tmdb.org/t/p/w200/${profile_path}`} alt={name} />
-      <h3>Name: {name}</h3>
+      <Author>Name: {name}</Author>
       <p>Character: {character}</p>
-    </li>
+    </CardWrapper>
   ));
 
   return (
-    <div className="container">
+    <>
       <h2>Actors</h2>
-      <ul>{elements}</ul>
-    </div>
+      <Wrapper>{elements}</Wrapper>
+    </>
   );
 };
 

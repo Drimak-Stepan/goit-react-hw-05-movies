@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 import { getMovieDetails } from '../../shared/api/api';
-
+import { Section, Btn, Imges, Description } from './MovieDetailsPage.styled';
 const MovieDetailsPage = () => {
   const [state, setState] = useState({
     item: {},
@@ -73,24 +73,26 @@ const MovieDetailsPage = () => {
     .join(', ');
 
   const vot = vote_average.toFixed();
+  const img = `https://image.tmdb.org/t/p/w400/${backdrop_path}`;
 
   return (
-    <div>
-      <section>
-        <button onClick={goBack}>Go Back</button>
+    <>
+      <Btn onClick={goBack}>Go Back</Btn>
+      <Section>
         <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w400/${backdrop_path}`}
-            alt={title}
-          />
+          <Imges>
+            <img src={img} alt={title} />
+          </Imges>
+          <Description>
+            <h1>{title}</h1>
+            <p>GENRES: {gen}</p>
+            <p>Release: {release_date}</p>
+            <p>Vote: {vot}</p>
+            <p>Overview: {overview}</p>
+          </Description>
         </div>
-        <h1>{title}</h1>
-        <p>GENRES: {gen}</p>
-        <p>Release: {release_date}</p>
-        <p>Vote: {vot}</p>
-        <p>Overview: {overview}</p>
-      </section>
-      <section>
+      </Section>
+      <Section>
         <h2>Additional information</h2>
         <ul>
           <li>
@@ -105,8 +107,8 @@ const MovieDetailsPage = () => {
           </li>
         </ul>
         <Outlet />
-      </section>
-    </div>
+      </Section>
+    </>
   );
 };
 

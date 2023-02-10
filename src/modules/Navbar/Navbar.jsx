@@ -1,4 +1,4 @@
-import { StyledLink } from './Navbar.styled';
+import { StyledLink, Header } from './Navbar.styled';
 import { nanoid } from 'nanoid';
 
 const items = [
@@ -16,11 +16,11 @@ const items = [
 
 const Navbar = () => {
   const elements = items.map(({ id, text, link }) => (
-    <li key={id}>
+    <nav key={id}>
       <StyledLink to={link}>{text}</StyledLink>
-    </li>
+    </nav>
   ));
-  return <ul>{elements}</ul>;
+  return <Header>{elements}</Header>;
 };
 
 export default Navbar;

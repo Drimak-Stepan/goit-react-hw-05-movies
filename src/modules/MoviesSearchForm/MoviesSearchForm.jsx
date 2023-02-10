@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { Wrapper, Input, Btn } from './MoviesSearchForm.styled';
+
 const MovieSearch = ({ onSubmit }) => {
   const [state, setState] = useState({
     search: '',
@@ -21,16 +23,16 @@ const MovieSearch = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <Wrapper onSubmit={handleSubmit}>
+      <Input
         name="search"
         value={state.search}
         onChange={handleChange}
         placeholder="Enter name of movie"
         required
       />
-      <button>Search</button>
-    </form>
+      <Btn>Search</Btn>
+    </Wrapper>
   );
 };
 

@@ -1,17 +1,19 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import { StylesLink } from './ShowList.styled';
 
 const ShowList = ({ items }) => {
   const location = useLocation();
   const elements = items.map(({ id, title }) => (
     <li key={id}>
-      <Link state={{ from: location }} to={`/movies/${id}`}>
+      <StylesLink state={{ from: location }} to={`/movies/${id}`}>
         {title}
-      </Link>
+      </StylesLink>
     </li>
   ));
 
-  return <ul>{elements}</ul>;
+  return <ol>{elements}</ol>;
 };
 
 export default ShowList;

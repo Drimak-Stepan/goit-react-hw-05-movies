@@ -47,11 +47,11 @@ const TrendMovies = () => {
   const { items, loading, error } = state;
 
   return (
-    <div>
+    <>
       {items.length > 0 && <ShowList items={items} />}
       {loading && <p>...load</p>}
       {error && <p>...load failed</p>}
-    </div>
+    </>
   );
 };
 
