@@ -19,7 +19,7 @@ const MovieSearch = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit({ ...state });
-    setState({ search: '' });
+    //setState({ search: '' });
   };
 
   return (
