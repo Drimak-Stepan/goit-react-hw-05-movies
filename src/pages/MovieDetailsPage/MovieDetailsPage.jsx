@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspence} from 'react';
+import { useState, useEffect, Suspense} from 'react';
 import {
   Link,
   Outlet,
@@ -113,9 +113,9 @@ const MovieDetailsPage = () => {
             </Link>
           </li>
         </ul>
-        <Suspence>
+        <Suspense>
         <Outlet />
-        <Suspence/>
+        </Suspense>
       </Section>
     </>
   );
