@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { Wrapper, Input, Btn } from './MoviesSearchForm.styled';
 
-const MovieSearch = ({ onSubmit }) => {
+const MovieSearch = ({ value, onSubmit }) => {
   const [state, setState] = useState({
-    query: '',
+    query: value,
   });
 
   const handleChange = ({ target }) => {
@@ -18,7 +18,9 @@ const MovieSearch = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ ...state });
+    onSubmit({
+      ...state,
+    });
   };
 
   return (
@@ -39,4 +41,5 @@ export default MovieSearch;
 
 MovieSearch.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };

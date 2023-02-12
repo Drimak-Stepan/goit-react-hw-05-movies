@@ -15,7 +15,7 @@ const MoviesPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const query = searchParams.get('query');
+  const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -48,15 +48,15 @@ const MoviesPage = () => {
     }
   }, [query]);
 
-  const changeSearch = ({ query }) => {
-    setSearchParams({ query });
+  const changeSearch = query => {
+    setSearchParams(query);
   };
 
   const { items } = state;
 
   return (
     <div>
-      <MovieSearch onSubmit={changeSearch} />
+      <MovieSearch value={query} onSubmit={changeSearch} />
       {items.length > 0 && <ShowList items={items} />}
     </div>
   );
