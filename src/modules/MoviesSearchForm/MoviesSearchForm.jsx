@@ -5,7 +5,7 @@ import { Wrapper, Input, Btn } from './MoviesSearchForm.styled';
 
 const MovieSearch = ({ onSubmit }) => {
   const [state, setState] = useState({
-    search: '',
+    query: '',
   });
 
   const handleChange = ({ target }) => {
@@ -19,14 +19,13 @@ const MovieSearch = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit({ ...state });
-    //setState({ search: '' });
   };
 
   return (
     <Wrapper onSubmit={handleSubmit}>
       <Input
-        name="search"
-        value={state.search}
+        name="query"
+        value={state.query}
         onChange={handleChange}
         placeholder="Enter name of movie"
         required

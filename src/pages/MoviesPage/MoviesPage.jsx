@@ -15,7 +15,7 @@ const MoviesPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const search = searchParams.get('query');
+  const query = searchParams.get('query');
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -25,7 +25,7 @@ const MoviesPage = () => {
           loading: true,
         }));
 
-        const data = await searchMovie(search);
+        const data = await searchMovie(query);
         setState(prevState => ({
           ...prevState,
           items: data,
@@ -43,13 +43,13 @@ const MoviesPage = () => {
       }
     };
 
-    if (search) {
+    if (query) {
       fetchMovie();
     }
-  }, [search]);
+  }, [query]);
 
-  const changeSearch = ({ search }) => {
-    setSearchParams({ search });
+  const changeSearch = ({ query }) => {
+    setSearchParams({ query });
   };
 
   const { items } = state;
